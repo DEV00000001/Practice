@@ -7,15 +7,17 @@ function Lesson1_1() {
   // it mean it create > n + 1 setInterval (n is second), and it not be cleared => memory leak
   useEffect(() => {
     console.log("effect");
+    // create interval to update number every second ( after 1 second, react read the latest number value, and add 1 to it)
     const interval = setInterval(() => {
-      setNumber(number + 1); 
+      setNumber(prev => prev + 1); 
     }, 1000);
 
     // add clean up for useEffect to clear the interval when number change or component unmount
     return () => {
       clearInterval(interval);
     }
-  },[number])
+  },[])
+  // remove dependency in useEffect, so the effect only run once when component mount
 
 
   return (
