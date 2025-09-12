@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useState } from "react";
 
-function Lesson1() {
+function Lesson1_0() {
   const [name, setName] = useState("");
   const [state, setState] = useState({
     name: "",
@@ -61,4 +61,4 @@ function Lesson1() {
   );
 }
 
-export default Lesson1;
+export default Lesson1_0;
