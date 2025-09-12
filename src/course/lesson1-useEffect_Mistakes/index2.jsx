@@ -10,6 +10,8 @@ function Lesson1_1() {
     const interval = setInterval(() => {
       setNumber(number + 1); 
     }, 1000);
+
+    // add clean up for useEffect to clear the interval when number change or component unmount
     return () => {
       clearInterval(interval);
     }
