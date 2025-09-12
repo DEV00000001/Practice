@@ -25,7 +25,7 @@ function Lesson1() {
 
   useEffect(() => {
     console.log("State changed:", state);
-  }, [user]);
+  }, [state.name, state.selected]);
   // React compares each value in the dependency array 
   // and if any of them have changed (using Object.is comparison),
   // it will re-run the effect.
