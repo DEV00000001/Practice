@@ -6,18 +6,24 @@ function Post() {
   // when component unmounts, fetch the posts is never cancelled, it is running in the background
   // this may lead to memory leaks 
   useEffect(() => {
-    // if the component is unmounted, we set this flag to true, so we don't update the state, and rerender the component
-    let isCancelled = false;
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    const controller = new AbortController();
+    const signal = controller.signal;
+    fetch("https://jsonplaceholder.typicode.com/posts", { signal })
       .then((response) => response.json())
       .then((data) => {
-        if (isCancelled) return;
         alert("posts are ready !, updating the state");
         setPosts(data);
         console.log(data);
-      });
+      })
+      .catch((err) => {
+        if (err.name === 'AbortError') {
+          console.log('Fetch aborted');
+        }else {
+          // handle Error
+        }
+      })
     return () => {
-      isCancelled = true;
+      controller.abort();
     };
   }, []);
   return (
