@@ -1,29 +1,28 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import axios from "axios";
 function Post() {
   const [posts, setPosts] = React.useState([]);
   // when component unmounts, fetch the posts is never cancelled, it is running in the background
   // this may lead to memory leaks 
   useEffect(() => {
-    const controller = new AbortController();
-    const signal = controller.signal;
-    fetch("https://jsonplaceholder.typicode.com/posts", { signal })
-      .then((response) => response.json())
-      .then((data) => {
+    const cancelToken = axios.CancelToken.source();
+    axios.get("https://jsonplaceholder.typicode.com/posts", { cancelToken: cancelToken.token })
+      .then((response) => {
         alert("posts are ready !, updating the state");
-        setPosts(data);
-        console.log(data);
+        setPosts(response.data);
+        console.log(response.data);
       })
       .catch((err) => {
-        if (err.name === 'AbortError') {
-          console.log('Fetch aborted');
+        if (axios.isCancel(err)) {
+          console.log('CANCELLED !');
         }else {
           // handle Error
         }
       })
     return () => {
-      controller.abort();
+      cancelToken.cancel();
+      console.log("component unmount, cancel the fetch if it is still running");
     };
   }, []);
   return (
