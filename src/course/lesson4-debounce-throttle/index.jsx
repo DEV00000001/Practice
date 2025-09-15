@@ -55,7 +55,7 @@ function Lesson4_0() {
 
   // fix: useMemo to memoize the debounced function
   const requestApi = React.useMemo(() => {
-    return debounce((e) => {
+    return throttle((e) => {
       fetch(`https://dummyjson.com/users/search?q=${e.target.value}`)
         .then((res) => res.json())
         .then((data) => setResults(data.users))
