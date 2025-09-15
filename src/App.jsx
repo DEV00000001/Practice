@@ -1,13 +1,15 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import NavWrapper from "./course/lesson3-code-splitting/NavWrapper";
-import Home from "./course/lesson3-code-splitting/Home";
+// import Home from "./course/lesson3-code-splitting/Home";
 // import About from "./course/lesson3-code-splitting/About";
-import Post from "./course/lesson3-code-splitting/Post";
-import { Suspense, lazy } from "react";
+// import Post from "./course/lesson3-code-splitting/Post";
+import { lazy } from "react";
 // code splitting / lazy loading : it means loading the code only when it is needed
 // this is useful for large components or libraries that are not needed immediately
-const About = wait(1000).then(lazy(() => import("./course/lesson3-code-splitting/About")));
+const About = lazy(() => wait(1000).then(() => import("./course/lesson3-code-splitting/About")));
+const Home = lazy(() => wait(1000).then(() => import("./course/lesson3-code-splitting/Home")));
+const Post = lazy(() => wait(1000).then(() => import("./course/lesson3-code-splitting/Post")));
 function App() {
   return (
     <>
@@ -18,9 +20,9 @@ function App() {
       {/* <Lesson2_1 /> */}
       <Routes>
         <Route path="/" element={<NavWrapper />}>
-          <Route path="/" element={<Home/>} />
-          <Route path="/about" element={<About />} />
-          <Route path="/posts" element={<Post />} />
+          <Route index element={<Home/>} />
+          <Route path="about" element={<About />} />
+          <Route path="posts" element={<Post />} />
         </Route>
       </Routes>
     </>
