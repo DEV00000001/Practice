@@ -1,12 +1,50 @@
-# React + Vite
+# 📚 Learning Examples Repository
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This repository is used to store **code examples** during my learning process.  
+Each branch (`course/...`) represents a **lesson/topic** I’m working on, containing demo code and small exercises.  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🗂 Branch Structure
 
-## Expanding the ESLint configuration
+- **`main`**: Default branch, stable code.
+- **`develop`**: Integration branch where all course branches are merged through Pull Requests.
+- **`course/...`**: Each branch with the `course/` prefix represents a **specific lesson**, for example:
+  - `course/code-splitting`
+  - `course/object-date-and-library-date`
+  - `course/userEffect-mistake-every-junior-react...`
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🚀 Workflow
+
+1. When starting a new lesson → create a branch `course/[lesson-name]`.
+2. Write example code and commit changes in that branch.
+3. When finished → open a **Pull Request** into the `develop` branch.
+4. After review/merge into `develop`, it can later be merged into `main` as a stable version.
+
+---
+
+## 💡 Purpose of this repo
+
+- Keep track of each learning topic with actual code.
+- Practice **Git workflow (feature branch, pull request, merge)**.
+- Build a collection of examples for future review.
+
+---
+
+## 🛠 Technologies
+
+- **JavaScript / React**
+- **Git & GitHub** (branching, pull requests, merge workflow)
+- Additional libraries depending on the lesson (e.g., date-fns, React Router, etc.)
+
+---
+
+## 📖 How to use
+
+Clone the repository:
+
+```bash
+git clone <repo-url>
+cd <repo-folder>
