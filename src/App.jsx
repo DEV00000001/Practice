@@ -5,6 +5,7 @@ import NavWrapper from "./course/lesson3-code-splitting/NavWrapper";
 // import About from "./course/lesson3-code-splitting/About";
 // import Post from "./course/lesson3-code-splitting/Post";
 import { lazy } from "react";
+import Lesson4_0 from "./course/lesson4-debounce-throttle";
 // code splitting / lazy loading : it means loading the code only when it is needed
 // this is useful for large components or libraries that are not needed immediately
 const About = lazy(() => wait(1000).then(() => import("./course/lesson3-code-splitting/About")));
@@ -18,13 +19,14 @@ function App() {
       {/* <Lesson1_2/> */}
       {/* <Lesson2_0/> */}
       {/* <Lesson2_1 /> */}
-      <Routes>
+      <Lesson4_0 />
+      {/* <Routes>
         <Route path="/" element={<NavWrapper />}>
           <Route index element={<Home/>} />
           <Route path="about" element={<About />} />
           <Route path="posts" element={<Post />} />
         </Route>
-      </Routes>
+      </Routes> */}
     </>
   );
 }
